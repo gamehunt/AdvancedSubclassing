@@ -102,9 +102,9 @@ namespace Subclass.AbilityCommands
 			TrackingAndMethods.RemoveAndAddRoles(player, true, false, false, true);
 
 			float health = player.Health;
-			float armor = player.AdrenalineHealth;
+			float armor = player.ArtificialHealth;
 			int maxHealth = player.MaxHealth;
-			int maxArmor = player.MaxAdrenalineHealth;
+			int maxArmor = player.MaxArtificialHealth;
 
 			RoleType trueRole = player.Role;
 
@@ -116,7 +116,7 @@ namespace Subclass.AbilityCommands
 			Timing.CallDelayed(0.1f, () =>
 			{
 				player.Health = health;
-				player.AdrenalineHealth = armor;
+				player.ArtificialHealth = armor;
 				player.IsFriendlyFireEnabled = true;
 				Player scp035 = null;
 				if (Subclass.Instance.Scp035Enabled)
@@ -136,7 +136,7 @@ namespace Subclass.AbilityCommands
 				TrackingAndMethods.RemoveAndAddRoles(player, true, false, false, true);
 
 				float curHealth = player.Health;
-				float curArmor = player.AdrenalineHealth;
+				float curArmor = player.ArtificialHealth;
 
 				player.SetRole(trueRole, true);
 
@@ -150,9 +150,9 @@ namespace Subclass.AbilityCommands
 					TrackingAndMethods.AddClass(player, subClass, scp035?.Id == player.Id, true, false, true);
 
 					player.MaxHealth = maxHealth;
-					player.MaxAdrenalineHealth = maxArmor;
+					player.MaxArtificialHealth = maxArmor;
 					player.Health = curHealth;
-					player.AdrenalineHealth = curArmor;
+					player.ArtificialHealth = curArmor;
 					player.IsFriendlyFireEnabled = !subClass.BoolOptions["DisregardHasFF"] && subClass.BoolOptions["HasFriendlyFire"];
 				});
 

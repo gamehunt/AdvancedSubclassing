@@ -411,8 +411,8 @@ namespace Subclass
 
 				if (subClass.IntOptions["MaxHealth"] != -1) player.MaxHealth = subClass.IntOptions["MaxHealth"];
 				if ((!lite || escaped) && subClass.IntOptions["HealthOnSpawn"] != -1) player.Health = subClass.IntOptions["HealthOnSpawn"];
-				if (subClass.IntOptions["MaxArmor"] != -1) player.MaxAdrenalineHealth = subClass.IntOptions["MaxArmor"];
-				if ((!lite || escaped) && subClass.IntOptions["ArmorOnSpawn"] != -1) player.AdrenalineHealth = subClass.IntOptions["ArmorOnSpawn"];
+				if (subClass.IntOptions["MaxArmor"] != -1) player.MaxArtificialHealth = subClass.IntOptions["MaxArmor"];
+				if ((!lite || escaped) && subClass.IntOptions["ArmorOnSpawn"] != -1) player.ArtificialHealth = subClass.IntOptions["ArmorOnSpawn"];
 
 				Timing.CallDelayed(0.3f, () =>
 				{

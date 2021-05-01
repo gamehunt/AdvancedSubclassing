@@ -417,6 +417,11 @@
             Unique identifier for the different types of doors.
             </summary>
         </member>
+        <member name="F:Exiled.API.Enums.DoorType.UnknownDoor">
+            <summary>
+            Represents an unknown door.
+            </summary>
+        </member>
         <member name="F:Exiled.API.Enums.DoorType.Scp012">
             <summary>
             Represents the 012 door.
@@ -467,9 +472,14 @@
             Represents the 106_SECONDARY door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.Scp173">
+        <member name="F:Exiled.API.Enums.DoorType.Scp173Gate">
             <summary>
-            Represents the 173 door.
+            Represents the 173 gate.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.Scp173Connector">
+            <summary>
+            Represents the door between the 173 gate and the 173 armory.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.Scp173Armory">
@@ -482,19 +492,14 @@
             Represents the 173_BOTTOM door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.Scp372">
+        <member name="F:Exiled.API.Enums.DoorType.GR18">
             <summary>
-            Represents the 372 door.
+            Represents the GR18 door.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.Scp914">
             <summary>
             Represents the 914 door.
-            </summary>
-        </member>
-        <member name="F:Exiled.API.Enums.DoorType.Airlocks">
-            <summary>
-            Represents the Airlocks door.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.CheckpointEntrance">
@@ -512,24 +517,24 @@
             Represents the CHECKPOINT_LCZ_B door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.ContDoor">
-            <summary>
-            Represents the ContDoor door.
-            </summary>
-        </member>
         <member name="F:Exiled.API.Enums.DoorType.EntranceDoor">
             <summary>
-            Represents the EntrDoor door.
+            RRepresents any entrance zone styled door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.Escape">
+        <member name="F:Exiled.API.Enums.DoorType.EscapePrimary">
             <summary>
-            Represents the ESCAPE door.
+            Represents the ESCAPE_PRIMARY door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.EscapeInner">
+        <member name="F:Exiled.API.Enums.DoorType.EscapeSecondary">
             <summary>
-            Represents the ESCAPE_INNER door.
+            Represents the ESCAPE_SECONDARY door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.ServersBottom">
+            <summary>
+            Represents the SERVERS_BOTTOM door.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.GateA">
@@ -549,7 +554,7 @@
         </member>
         <member name="F:Exiled.API.Enums.DoorType.HeavyContainmentDoor">
             <summary>
-            Represents the HeavyContainmentDoor door.
+            Represents any heavy containment styled door.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.HID">
@@ -589,7 +594,7 @@
         </member>
         <member name="F:Exiled.API.Enums.DoorType.LightContainmentDoor">
             <summary>
-            Represents the LightContainmentDoor door.
+            Represents any light containment styled door.
             </summary>
         </member>
         <member name="F:Exiled.API.Enums.DoorType.NukeArmory">
@@ -612,9 +617,34 @@
             Represents the SURFACE_GATE door.
             </summary>
         </member>
-        <member name="F:Exiled.API.Enums.DoorType.UnknownDoor">
+        <member name="F:Exiled.API.Enums.DoorType.Scp372">
             <summary>
-            Represents an unknown door.
+            Represents the 372 door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.Airlocks">
+            <summary>
+            Represents the Airlocks door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.ContDoor">
+            <summary>
+            Represents the ContDoor door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.Escape">
+            <summary>
+            Represents the ESCAPE door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.EscapeInner">
+            <summary>
+            Represents the ESCAPE_INNER door.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Enums.DoorType.Scp173">
+            <summary>
+            Represents the 173 door.
             </summary>
         </member>
         <member name="T:Exiled.API.Enums.EffectType">
@@ -1324,22 +1354,42 @@
             Gets all the <see cref="T:Exiled.API.Enums.CameraType"/> and <see cref="M:Exiled.API.Extensions.CameraExtensions.Room(Camera079)"/> values for for the <see cref="T:Camera079"/> instances using <see cref="F:Camera079.cameraId"/> and <see cref="T:UnityEngine.GameObject"/> name.
             </summary>
         </member>
-        <member name="T:Exiled.API.Extensions.DoorTypeExtension">
+        <member name="T:Exiled.API.Extensions.DoorExtensions">
             <summary>
-            Contains an extension method to get <see cref="T:Exiled.API.Enums.DoorType"/> from <see cref="T:Door"/>.
-            Internal class <see cref="M:Exiled.API.Extensions.DoorTypeExtension.RegisterDoorTypesOnLevelLoad"/> to cache the <see cref="T:Exiled.API.Enums.DoorType"/> on level load.
+            Contains extensions related to <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/>.
             </summary>
         </member>
-        <member name="M:Exiled.API.Extensions.DoorTypeExtension.Type(Door)">
+        <member name="M:Exiled.API.Extensions.DoorExtensions.Type(Interactables.Interobjects.DoorUtils.DoorVariant)">
             <summary>
             Gets the <see cref="T:Exiled.API.Enums.DoorType"/>.
             </summary>
             <param name="door">The Door to check.</param>
             <returns>The <see cref="T:Exiled.API.Enums.DoorType"/>.</returns>
         </member>
-        <member name="M:Exiled.API.Extensions.DoorTypeExtension.RegisterDoorTypesOnLevelLoad">
+        <member name="M:Exiled.API.Extensions.DoorExtensions.BreakDoor(Interactables.Interobjects.DoorUtils.DoorVariant)">
             <summary>
-            Gets all the <see cref="T:Exiled.API.Enums.DoorType"/> values for for the <see cref="T:Door"/> instances using <see cref="F:Door.DoorName"/> and <see cref="T:UnityEngine.GameObject"/> name.
+            Breaks the specified door, if it is not already broken.
+            </summary>
+            <param name="door">The <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/> to break.</param>
+            <returns>True if the door was broken, false if it was unable to be broken, or was already broken before.</returns>
+        </member>
+        <member name="M:Exiled.API.Extensions.DoorExtensions.IsBreakable(Interactables.Interobjects.DoorUtils.DoorVariant)">
+            <summary>
+            Indicates when the door can be broken.
+            </summary>
+            <param name="door">The <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/>.</param>
+            <returns>true if the door can be broken; otherwise, false.</returns>
+        </member>
+        <member name="M:Exiled.API.Extensions.DoorExtensions.GetNametag(Interactables.Interobjects.DoorUtils.DoorVariant)">
+            <summary>
+            Gets a nametag of a door.
+            </summary>
+            <param name="door">The <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/>.</param>
+            <returns>A nametag of the door or null.</returns>
+        </member>
+        <member name="M:Exiled.API.Extensions.DoorExtensions.RegisterDoorTypesOnLevelLoad">
+            <summary>
+            Gets all the <see cref="T:Exiled.API.Enums.DoorType"/> values for the <see cref="T:Door"/> instances using <see cref="F:Door.DoorName"/> and <see cref="T:UnityEngine.GameObject"/> name.
             </summary>
         </member>
         <member name="T:Exiled.API.Extensions.EffectTypeExtension">
@@ -1516,6 +1566,13 @@
             <param name="weapon">The weapon with attachment.</param>
             <param name="type">Type of the other.</param>
         </member>
+        <member name="M:Exiled.API.Extensions.Item.GetDefaultDurability(ItemType)">
+            <summary>
+            Gets the default durability of any item.
+            </summary>
+            <param name="item">The <see cref="T:ItemType">item</see> that you want to get durability of.</param>
+            <returns>Returns the item durability.</returns>
+        </member>
         <member name="T:Exiled.API.Extensions.LiftTypeExtension">
             <summary>
             Contains an extension method to get <see cref="T:Exiled.API.Enums.ElevatorType"/> from <see cref="T:Lift"/>.
@@ -1531,8 +1588,115 @@
         </member>
         <member name="M:Exiled.API.Extensions.LiftTypeExtension.RegisterElevatorTypesOnLevelLoad">
             <summary>
-            Gets all the <see cref="T:Exiled.API.Enums.ElevatorType"/> values for for the <see cref="T:Lift"/> instances using <see cref="F:Lift.elevatorName"/> and <see cref="T:UnityEngine.GameObject"/> name.
+            Gets all the <see cref="T:Exiled.API.Enums.ElevatorType"/> values for the <see cref="T:Lift"/> instances using <see cref="F:Lift.elevatorName"/> and <see cref="T:UnityEngine.GameObject"/> name.
             </summary>
+        </member>
+        <member name="T:Exiled.API.Extensions.MirrorExtensions">
+            <summary>
+            A set of extensions for <see cref="N:Mirror"/> Networking.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Extensions.MirrorExtensions.WriterExtensions">
+            <summary>
+            Gets <see cref="T:System.Reflection.MethodInfo"/> corresponding to <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Extensions.MirrorExtensions.SyncVarDirtyBits">
+            <summary>
+            Gets a all DirtyBit <see cref="T:System.UInt64"/> from <see cref="T:Exiled.API.Extensions.String"/>(format:classname.methodname).
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Extensions.MirrorExtensions.SetDirtyBitsMethodInfo">
+            <summary>
+            Gets a <see cref="M:Mirror.NetworkBehaviour.SetDirtyBit(System.UInt64)"/>'s <see cref="T:System.Reflection.MethodInfo"/>.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Extensions.MirrorExtensions.SendSpawnMessageMethodInfo">
+            <summary>
+            Gets a NetworkServer.SendSpawnMessage's <see cref="T:System.Reflection.MethodInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.Shake(Exiled.API.Features.Player)">
+            <summary>
+            Shaking target <see cref="T:Exiled.API.Features.Player"/> window.
+            </summary>
+            <param name="player">Target to shake.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.PlayBeepSound(Exiled.API.Features.Player)">
+            <summary>
+            Play beep sound to <see cref="T:Exiled.API.Features.Player"/>.
+            </summary>
+            <param name="player">Target to play.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.SetPlayerInfoForTargetOnly(Exiled.API.Features.Player,Exiled.API.Features.Player,System.String)">
+            <summary>
+            Set <see cref="P:NicknameSync.Network_customPlayerInfoString"/> that only <see cref="T:Exiled.API.Features.Player"/> can see.
+            </summary>
+            <param name="player">Only this player can see info.</param>
+            <param name="target">Target to set info.</param>
+            <param name="info">Setting info.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.ChangeAppearance(Exiled.API.Features.Player,RoleType)">
+            <summary>
+            Change <see cref="T:Exiled.API.Features.Player"/> character model for appearance.
+            It will continue until <see cref="T:Exiled.API.Features.Player"/>'s <see cref="T:RoleType"/> changes.
+            </summary>
+            <param name="player">Player to change.</param>
+            <param name="type">Model type.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.PlayCassieAnnouncement(Exiled.API.Features.Player,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Send CASSIE announcement that only <see cref="T:Exiled.API.Features.Player"/> can hear.
+            It will continue until <see cref="T:Exiled.API.Features.Player"/>'s <see cref="T:RoleType"/> changes.
+            </summary>
+            <param name="player">Target to send.</param>
+            <param name="words">Announcement words.</param>
+            <param name="makeHold">Same on <see cref="M:Exiled.API.Features.Cassie.Message(System.String,System.Boolean,System.Boolean)"/>'s isHeld.</param>
+            <param name="makeNoise">Same on <see cref="M:Exiled.API.Features.Cassie.Message(System.String,System.Boolean,System.Boolean)"/>'s isNoisy.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.SendFakeSyncVar(Exiled.API.Features.Player,Mirror.NetworkIdentity,System.Type,System.String,System.Object)">
+            <summary>
+            Send fake values to client's <see cref="T:Mirror.SyncVarAttribute"/>.
+            </summary>
+            <param name="target">Target to send.</param>
+            <param name="behaviorOwner"><see cref="T:Mirror.NetworkIdentity"/> of object that owns <see cref="T:Mirror.NetworkBehaviour"/>.</param>
+            <param name="targetType"><see cref="T:Mirror.NetworkBehaviour"/>'s type.</param>
+            <param name="propertyName">Property name starting with Network.</param>
+            <param name="value">Value of send to target.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.ResyncSyncVar(Mirror.NetworkIdentity,System.Type,System.String)">
+            <summary>
+            Force resync to client's <see cref="T:Mirror.SyncVarAttribute"/>.
+            </summary>
+            <param name="behaviorOwner"><see cref="T:Mirror.NetworkIdentity"/> of object that owns <see cref="T:Mirror.NetworkBehaviour"/>.</param>
+            <param name="targetType"><see cref="T:Mirror.NetworkBehaviour"/>'s type.</param>
+            <param name="propertyName">Property name starting with Network.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.SendFakeTargetRpc(Exiled.API.Features.Player,Mirror.NetworkIdentity,System.Type,System.String,System.Object[])">
+            <summary>
+            Send fake values to client's <see cref="T:Mirror.ClientRpcAttribute"/>.
+            </summary>
+            <param name="target">Target to send.</param>
+            <param name="behaviorOwner"><see cref="T:Mirror.NetworkIdentity"/> of object that owns <see cref="T:Mirror.NetworkBehaviour"/>.</param>
+            <param name="targetType"><see cref="T:Mirror.NetworkBehaviour"/>'s type.</param>
+            <param name="rpcName">Property name starting with Rpc.</param>
+            <param name="values">Values of send to target.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.SendFakeSyncObject(Exiled.API.Features.Player,Mirror.NetworkIdentity,System.Type,System.Action{Mirror.NetworkWriter})">
+            <summary>
+            Send fake values to client's <see cref="T:Mirror.SyncObject"/>.
+            </summary>
+            <param name="target">Target to send.</param>
+            <param name="behaviorOwner"><see cref="T:Mirror.NetworkIdentity"/> of object that owns <see cref="T:Mirror.NetworkBehaviour"/>.</param>
+            <param name="targetType"><see cref="T:Mirror.NetworkBehaviour"/>'s type.</param>
+            <param name="customAction">Custom writing action.</param>
+        </member>
+        <member name="M:Exiled.API.Extensions.MirrorExtensions.EditNetworkObject(Mirror.NetworkIdentity,System.Action{Mirror.NetworkIdentity})">
+            <summary>
+            Edit <see cref="T:Mirror.NetworkIdentity"/>'s parameter and sync.
+            </summary>
+            <param name="identity">Target object.</param>
+            <param name="customAction">Edit function.</param>
         </member>
         <member name="T:Exiled.API.Extensions.RagdollExtensions">
             <summary>
@@ -1664,6 +1828,14 @@
             <param name="name">Name of the <see cref="T:UnityEngine.GameObject"/>.</param>
             <returns>Name without brackets.</returns>
         </member>
+        <member name="M:Exiled.API.Extensions.String.GetBefore(System.String,System.Char)">
+            <summary>
+            Retrieves a string before a symbol from an input.
+            </summary>
+            <param name="input">The input.</param>
+            <param name="symbol">The symbol.</param>
+            <returns>Substring before the symbol.</returns>
+        </member>
         <member name="M:Exiled.API.Extensions.String.SplitCamelCase(System.String)">
             <summary>
             Splits camel case string to space-separated words. Ex: SomeCamelCase -> Some Camel Case.
@@ -1677,6 +1849,13 @@
             </summary>
             <param name="input">Input string.</param>
             <returns>String without spaces.</returns>
+        </member>
+        <member name="M:Exiled.API.Extensions.String.GetRawUserId(System.String)">
+            <summary>
+            Gets the player's user id without the authentication.
+            </summary>
+            <param name="userId">The user id.</param>
+            <returns>Returns the raw user id.</returns>
         </member>
         <member name="T:Exiled.API.Features.Badge">
             <summary>
@@ -1856,6 +2035,31 @@
             A set of tools to easily handle the in-game map.
             </summary>
         </member>
+        <member name="F:Exiled.API.Features.Map.RoomsValue">
+            <summary>
+            A list of <see cref="T:Exiled.API.Features.Room"/>s on the map.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Features.Map.DoorsValue">
+            <summary>
+            A list of <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/>s on the map.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Features.Map.CamerasValue">
+            <summary>
+            A list of <see cref="T:Camera079"/>s on the map.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Features.Map.LiftsValue">
+            <summary>
+            A list of <see cref="T:Lift"/>s on the map.
+            </summary>
+        </member>
+        <member name="F:Exiled.API.Features.Map.TeslasValue">
+            <summary>
+            A list of <see cref="T:TeslaGate"/>s on the map.
+            </summary>
+        </member>
         <member name="P:Exiled.API.Features.Map.IsLCZDecontaminated">
             <summary>
             Gets a value indicating whether decontamination has begun in the light containment zone.
@@ -1873,7 +2077,7 @@
         </member>
         <member name="P:Exiled.API.Features.Map.Doors">
             <summary>
-            Gets all <see cref="T:Door"/> objects.
+            Gets all <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/> objects.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Map.Cameras">
@@ -1890,6 +2094,16 @@
             <summary>
             Gets all <see cref="T:TeslaGate"/> objects.
             </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Map.DefaultRagdollOwner">
+            <summary>
+            Gets the Default <see cref="T:Ragdoll.Info"/>,
+            used in <see cref="M:Exiled.API.Features.Map.SpawnRagdoll(RoleType,System.String,PlayerStats.HitInfo,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean,System.Int32,System.String)"/>
+            and <see cref="M:Exiled.API.Features.Map.SpawnRagdoll(Role,Ragdoll.Info,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean)"/>.
+            </summary>
+            <remarks>
+            This value can be modified to change the default Ragdoll's info.
+            </remarks>
         </member>
         <member name="P:Exiled.API.Features.Map.IntercomState">
             <summary>
@@ -1913,6 +2127,104 @@
             <param name="objectInRoom">The <see cref="T:UnityEngine.GameObject"/> inside the room.</param>
             <returns>The <see cref="T:Exiled.API.Features.Room"/> that the <see cref="T:UnityEngine.GameObject"/> is located inside.</returns>
         </member>
+        <member name="M:Exiled.API.Features.Map.SpawnRagdoll(Exiled.API.Features.Player,DamageTypes.DamageType,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean)">
+            <summary>
+            Spawns a ragdoll for a player on a certain position.
+            </summary>
+            <param name="victim">Victim, represented as a player.</param>
+            <param name="deathCause">The message to be displayed as his death.</param>
+            <param name="position">Where the ragdoll will be spawned.</param>
+            <param name="rotation">The rotation for the ragdoll.</param>
+            <param name="velocity">The initial velocity the ragdoll will have, as if it was exploded.</param>
+            <param name="allowRecall">Sets this ragdoll as respawnable by SCP-049.</param>
+            <returns>The Ragdoll component (requires Assembly-CSharp to be referenced).</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.SpawnRagdoll(RoleType,DamageTypes.DamageType,System.String,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean,System.Int32,System.String)">
+            <summary>
+            Spawns a ragdoll on the map based on the different arguments.
+            </summary>
+            <remarks>
+            Tip: You can do '<paramref name="allowRecall"/>: true, <paramref name="playerId"/>: MyPlayer.Id' to skip parameters.
+            </remarks>
+            <example>
+            <code>
+            // Code to spawn a fake ragdoll
+            if (ev.Player == MyPlugin.TheInmortalPlayer)
+            {
+                var fakeRagdoll = Map.SpawnRagdoll(RoleType.ClassD, DamageTypes.Fall, "The Falling Guy", new Vector3(1234f, -1f, 4321f));
+            }
+            </code>
+            </example>
+            <param name="roleType">The <see cref="T:RoleType"/> to use as ragdoll.</param>
+            <param name="deathCause">The death cause, expressed as a <see cref="T:DamageTypes.DamageType"/>.</param>
+            <param name="victimNick">The name from the victim, who the corpse belongs to.</param>
+            <param name="position">Where the ragdoll will be spawned.</param>
+            <param name="rotation">The rotation for the ragdoll.</param>
+            <param name="velocity">The initial velocity the ragdoll will have, as if it was exploded.</param>
+            <param name="allowRecall">Sets this ragdoll as respawnable by SCP-049. Must have a valid <paramref name="playerId"/>.</param>
+            <param name="playerId">Used for recall. The <see cref="P:Exiled.API.Features.Player.Id"/> to be recalled.</param>
+            <param name="mirrorOwnerId">Can be ignored. The <see cref="T:Dissonance.Integrations.MirrorIgnorance.MirrorIgnorancePlayer"/>'s PlayerId field.</param>
+            <returns>The Ragdoll component (requires Assembly-CSharp to be referenced).</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.SpawnRagdoll(RoleType,System.String,PlayerStats.HitInfo,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean,System.Int32,System.String)">
+            <summary>
+            Spawns a ragdoll on the map based on the different arguments.
+            </summary>
+            <remarks>
+            Tip: You can do, for example, '<paramref name="velocity"/>: "Vector3.up * 3"' to skip parameters.
+            </remarks>
+            <example>
+            <code>
+            // Code to spawn a fake ragdoll
+            if (ev.Player == MyPlugin.TheInmortalPlayer)
+            {
+                var fakeRagdoll = Map.SpawnRagdoll(ev.Player.Role, ev.Player.Position, victimNick: ev.Player.DisplayNickname, playerId: ev.Player.Id);
+            }
+            </code>
+            </example>
+            <param name="roleType">The <see cref="T:RoleType"/> to use as ragdoll.</param>
+            <param name="victimNick">The name from the victim, who the corpse belongs to.</param>
+            <param name="hitInfo">The <see cref="T:PlayerStats.HitInfo"/> that displays who killed this ragdoll, and using which tool.</param>
+            <param name="position">Where the ragdoll will be spawned.</param>
+            <param name="rotation">The rotation for the ragdoll.</param>
+            <param name="velocity">The initial velocity the ragdoll will have, as if it was exploded.</param>
+            <param name="allowRecall">Sets this ragdoll as respawnable by SCP-049.</param>
+            <param name="playerId">Used for recall. The <see cref="P:Exiled.API.Features.Player.Id"/> to be recalled.</param>
+            <param name="mirrorOwnerId">Can be ignored. The <see cref="T:Dissonance.Integrations.MirrorIgnorance.MirrorIgnorancePlayer"/>'s PlayerId field, likely used in the client.</param>
+            <returns>The Ragdoll component (requires Assembly-CSharp to be referenced).</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.SpawnRagdoll(Role,Ragdoll.Info,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3,System.Boolean)">
+            <summary>
+            Optimized method to Spawn a ragdoll on the map.
+            Will only allocate the newly created GameObject, requires extra work and pre-loaded base game roles.
+            </summary>
+            <remarks>
+            <list type="number">
+            <item>
+            <para>
+            EXILED already has an internal, default Ragdoll.Info: the use of this
+            method to try to optimize a plugin is absolutely optional.
+            </para>
+            We recommend using: Map.SpawnRagdoll(RoleType roleType, string victimNick, Vector3 position)
+            </item>
+            <item>
+            This method should only ever be used if you're dealing with massive
+            server-sided lag.
+            </item>
+            <item>
+            Ragdoll.Info's "ownerID" isn't the SteamID, but the
+            <see cref="T:Dissonance.Integrations.MirrorIgnorance.MirrorIgnorancePlayer"/>'s PlayerId field.
+            </item>
+            </list>
+            </remarks>
+            <param name="role">Main game's <see cref="T:Role"/> thad defines the role to spawn a ragdoll.</param>
+            <param name="ragdollInfo"><see cref="T:Ragdoll.Info"/> object containing the ragdoll's info.</param>
+            <param name="position">Where the ragdoll will be spawned.</param>
+            <param name="rotation">The rotation for the ragdoll.</param>
+            <param name="velocity">The initial velocity the ragdoll will have, as if it was exploded.</param>
+            <param name="allowRecall">Sets this ragdoll as respawnable by SCP-049.</param>
+            <returns>The <see cref="T:Ragdoll"/> component created.</returns>
+        </member>
         <member name="M:Exiled.API.Features.Map.SpawnHands(UnityEngine.Vector3,UnityEngine.Quaternion)">
             <summary>
             Spawns hands at the specified position with specified rotation.
@@ -1920,17 +2232,11 @@
             <param name="position">Hands position.</param>
             <param name="rotation">Hands rotation.</param>
         </member>
-        <member name="M:Exiled.API.Features.Map.ForceSpawn2536">
+        <member name="M:Exiled.API.Features.Map.Broadcast(Exiled.API.Features.Broadcast)">
             <summary>
-            Force spawns SCP-2536 at a random player.
+            Broadcasts a message to all players.
             </summary>
-        </member>
-        <member name="M:Exiled.API.Features.Map.ForceSpawn2536(Exiled.API.Features.Player,System.Boolean)">
-            <summary>
-            Force spawns SCP-2536 at a specified player.
-            </summary>
-            <param name="player">The <see cref="T:Exiled.API.Features.Player"/> to spawn SCP-2536 at.</param>
-            <param name="addToChosenList">If set to true, the player will be added to the chosen list and cannot be automatically selected for the remainder of the round.</param>
+            <param name="broadcast">The <see cref="T:Exiled.API.Features.Broadcast"/> to be broadcasted.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.Broadcast(System.UInt16,System.String,Broadcast.BroadcastFlags)">
             <summary>
@@ -1984,6 +2290,20 @@
             </summary>
             <param name="cameraType">The <see cref="T:UnityEngine.CameraType"/> to search for.</param>
             <returns>The <see cref="T:Camera079"/> with the given camera type.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.GetDoorByName(System.String)">
+            <summary>
+            Gets the door with the given door name.
+            </summary>
+            <param name="doorName">The door name.</param>
+            <returns>The <see cref="T:Interactables.Interobjects.DoorUtils.DoorVariant"/> or null if a door with this name doesn't exist.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Map.ChangeUnitColor(System.Int32,System.String)">
+            <summary>
+            Changes the color of a MTF unit.
+            </summary>
+            <param name="index">The index of the unit color you want to change.</param>
+            <param name="color">The new color of the Unit.</param>
         </member>
         <member name="M:Exiled.API.Features.Map.ClearCache">
             <summary>
@@ -2043,7 +2363,7 @@
         </member>
         <member name="T:Exiled.API.Features.Player">
             <summary>
-            Represents the in-game player, by encapsulating a <see cref="T:ReferenceHub"/>.
+            Represents the in-game player, by encapsulating a <see cref="P:Exiled.API.Features.Player.ReferenceHub"/>.
             </summary>
         </member>
         <member name="M:Exiled.API.Features.Player.#ctor(ReferenceHub)">
@@ -2085,7 +2405,7 @@
         </member>
         <member name="P:Exiled.API.Features.Player.ReferenceHub">
             <summary>
-            Gets the encapsulated <see cref="T:ReferenceHub"/>.
+            Gets the encapsulated <see cref="P:Exiled.API.Features.Player.ReferenceHub"/>.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Player.GameObject">
@@ -2151,6 +2471,14 @@
         <member name="P:Exiled.API.Features.Player.AuthenticationType">
             <inheritdoc cref="T:Exiled.API.Enums.AuthenticationType"/>
         </member>
+        <member name="P:Exiled.API.Features.Player.IsVerified">
+            <summary>
+            Gets a value indicating whether or not the player is verified.
+            </summary>
+            <remarks>
+            This is always false if online_mode is set to false.
+            </remarks>
+        </member>
         <member name="P:Exiled.API.Features.Player.DisplayNickname">
             <summary>
             Gets or sets the player's display nickname.
@@ -2162,10 +2490,21 @@
             Gets the player's nickname.
             </summary>
         </member>
+        <member name="P:Exiled.API.Features.Player.InfoArea">
+            <summary>
+            Gets or sets the player's player info area bitmask.
+            You can hide player info elements with this.
+            </summary>
+        </member>
         <member name="P:Exiled.API.Features.Player.PlayerInfoArea">
             <summary>
             Gets or sets the player's player info area bitmask.
             You can hide player info elements with this.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Player.CustomInfo">
+            <summary>
+            Gets or sets the player's custom player info string.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Player.CustomPlayerInfo">
@@ -2277,7 +2616,7 @@
         </member>
         <member name="P:Exiled.API.Features.Player.IPAddress">
             <summary>
-            Gets or sets the player's IP address.
+            Gets the player's IP address.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Player.NoClipEnabled">
@@ -2385,10 +2724,21 @@
             Gets or sets the player's maximum health.
             </summary>
         </member>
+        <member name="P:Exiled.API.Features.Player.ArtificialHealth">
+            <summary>
+            Gets or sets the player's artificial health.
+            If the health is greater than the <see cref="P:Exiled.API.Features.Player.MaxArtificialHealth"/>, it will also be changed to match the artificial health.
+            </summary>
+        </member>
         <member name="P:Exiled.API.Features.Player.AdrenalineHealth">
             <summary>
             Gets or sets the player's adrenaline health.
             If the health is greater than the <see cref="P:Exiled.API.Features.Player.MaxAdrenalineHealth"/>, the MaxAdrenalineHealth will also be changed to match the adrenaline health.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Player.MaxArtificialHealth">
+            <summary>
+            Gets or sets the player's maximum artificial health.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Player.MaxAdrenalineHealth">
@@ -2443,7 +2793,7 @@
         </member>
         <member name="P:Exiled.API.Features.Player.Stamina">
             <summary>
-            Gets the <see cref="T:Stamina"/> class.
+            Gets the <see cref="P:Exiled.API.Features.Player.Stamina"/> class.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Player.Level">
@@ -2524,6 +2874,23 @@
             Gets a value indicating whether player has hands.
             </summary>
         </member>
+        <member name="P:Exiled.API.Features.Player.Items">
+            <summary>
+            Gets player's items.
+            </summary>
+        </member>
+        <member name="P:Exiled.API.Features.Player.UnverifiedPlayers">
+            <summary>
+            Gets a dictionary for storing player objects of connected but not yet verified players.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Player.Get(Exiled.API.Enums.Side)">
+            <summary>
+            Gets a <see cref="T:Exiled.API.Features.Player"/> <see cref="T:System.Collections.Generic.IEnumerable`1"/> filtered by side.
+            </summary>
+            <param name="side">The players' side.</param>
+            <returns>Returns the filtered <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
+        </member>
         <member name="M:Exiled.API.Features.Player.Get(Team)">
             <summary>
             Gets a <see cref="T:Exiled.API.Features.Player"/> <see cref="T:System.Collections.Generic.IEnumerable`1"/> filtered by team.
@@ -2537,6 +2904,13 @@
             </summary>
             <param name="role">The players' role.</param>
             <returns>Returns the filtered <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
+        </member>
+        <member name="M:Exiled.API.Features.Player.Get(CommandSender)">
+            <summary>
+            Gets the <see cref="T:Exiled.API.Features.Player"/> belonging to the CommandSender, if any.
+            </summary>
+            <param name="sender">The command sender.</param>
+            <returns>Returns a player or null if not found.</returns>
         </member>
         <member name="M:Exiled.API.Features.Player.Get(ReferenceHub)">
             <summary>
@@ -2604,11 +2978,24 @@
             <param name="lite">Indicates whether it should preserve the position and inventory after changing the role or not.</param>
             <param name="isEscaped">Indicates whether the player is escaped or not.</param>
         </member>
+        <member name="M:Exiled.API.Features.Player.Broadcast(Exiled.API.Features.Broadcast)">
+            <summary>
+            Broadcasts the given <see cref="T:Exiled.API.Features.Broadcast"/> to the player.
+            </summary>
+            <param name="broadcast">The <see cref="T:Exiled.API.Features.Broadcast"/> to be broadcasted.</param>
+        </member>
         <member name="M:Exiled.API.Features.Player.DropItem(Inventory.SyncItemInfo)">
             <summary>
             Drops an item from the player's inventory.
             </summary>
             <param name="item">The item to be dropped.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Player.HasItem(ItemType)">
+            <summary>
+            Indicates whether or not the player has an item.
+            </summary>
+            <param name="targetItem">The item to search for.</param>
+            <returns>true, if the player has it; otherwise, false.</returns>
         </member>
         <member name="M:Exiled.API.Features.Player.RemoveItem(Inventory.SyncItemInfo)">
             <summary>
@@ -2791,6 +3178,14 @@
             Enables a <see cref="T:CustomPlayerEffects.PlayerEffect">status effect</see> on the player.
             </summary>
             <typeparam name="T">The <see cref="T:CustomPlayerEffects.PlayerEffect"/> to enable.</typeparam>
+            <param name="duration">The amount of time the effect will be active for.</param>
+            <param name="addDurationIfActive">If the effect is already active, setting to true will add this duration onto the effect.</param>
+        </member>
+        <member name="M:Exiled.API.Features.Player.EnableEffect(CustomPlayerEffects.PlayerEffect,System.Single,System.Boolean)">
+            <summary>
+            Enables a <see cref="T:CustomPlayerEffects.PlayerEffect">status effect</see> on the player.
+            </summary>
+            <param name="effect">The name of the <see cref="T:CustomPlayerEffects.PlayerEffect"/> to enable.</param>
             <param name="duration">The amount of time the effect will be active for.</param>
             <param name="addDurationIfActive">If the effect is already active, setting to true will add this duration onto the effect.</param>
         </member>
@@ -3099,6 +3494,33 @@
             Restarts the round.
             </summary>
         </member>
+        <member name="M:Exiled.API.Features.Round.Restart(System.Boolean,System.Boolean,ServerStatic.NextRoundAction)">
+            <summary>
+            Restarts the round with custom settings.
+            </summary>
+            <param name="fastRestart">
+            Indicates whether or not it'll be a fast restart.
+            If it's a fast restart, then players won't be reconnected from
+            the server; otherwise, they will.
+            </param>
+            <param name="overrideRestartAction">
+            Overrides a value of <see cref="T:ServerStatic.NextRoundAction"/>.
+            Makes sense if someone used a command to set another action.
+            </param>
+            <param name="restartAction">
+            The <see cref="T:ServerStatic.NextRoundAction"/>.
+            <para>
+            <see cref="F:ServerStatic.NextRoundAction.DoNothing"/> - does nothing, just restarts the round silently.
+            <see cref="F:ServerStatic.NextRoundAction.Restart"/> - restarts the server, reconnects all players.
+            <see cref="F:ServerStatic.NextRoundAction.Shutdown"/> - shutdowns the server, also disconnects all players.
+            </para>
+            </param>
+        </member>
+        <member name="M:Exiled.API.Features.Round.RestartSilently">
+            <summary>
+            Restarts the round silently.
+            </summary>
+        </member>
         <member name="M:Exiled.API.Features.Round.ForceEnd">
             <summary>
             Forces the round to end, regardless of which factions are alive.
@@ -3183,6 +3605,7 @@
         <member name="P:Exiled.API.Features.Server.Host">
             <summary>
             Gets the player's host of the server.
+            Might be null when called when the server isn't loaded.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Server.Broadcast">
@@ -3212,13 +3635,39 @@
         </member>
         <member name="P:Exiled.API.Features.Server.Port">
             <summary>
-            Gets or sets the port of the server.
+            Gets the port of the server.
             </summary>
         </member>
         <member name="P:Exiled.API.Features.Server.FriendlyFire">
             <summary>
             Gets or sets a value indicating whether friendly fire is enabled or not.
             </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Server.Restart">
+            <summary>
+            Restarts the server, reconnects all players.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Server.Shutdown">
+            <summary>
+            Shutdowns the server, disconnects all players.
+            </summary>
+        </member>
+        <member name="M:Exiled.API.Features.Server.RestartRedirect(System.UInt16)">
+            <summary>
+            Redirects players to a server on another port, restarts the current server.
+            </summary>
+            <param name="redirectPort">The port to redirect players to.</param>
+            <returns>true, if redirection was successful; otherwise, false.</returns>
+            <remarks>If the returned value is false, the server won't restart.</remarks>
+        </member>
+        <member name="M:Exiled.API.Features.Server.ShutdownRedirect(System.UInt16)">
+            <summary>
+            Redirects players to a server on another port, shutdowns the current server.
+            </summary>
+            <param name="redirectPort">The port to redirect players to.</param>
+            <returns>true, if redirection was successful; otherwise, false.</returns>
+            <remarks>If the returned value is false, the server won't shutdown.</remarks>
         </member>
         <member name="T:Exiled.API.Features.Warhead">
             <summary>
